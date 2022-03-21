@@ -29,6 +29,7 @@ def triangle():
   h=int(input("Enter Height: "))
   area=0.5 * b * h
   perimeter=b+s1+s2
+  print()
   
   print("Area of Triangle : ",area)
   print("Perimeter of Rectangle : ",perimeter)
@@ -40,6 +41,7 @@ def rectangle():
   w=int(input("Enter Width: "))
   area=l*w
   perimeter=2*(l+w)
+  print()
   
   print("Area of Rectangle : ",area)
   print("Perimeter of Rectangle : ",perimeter)
@@ -52,6 +54,7 @@ def parallel():
   h=int(input("Enter Height: "))
   area=h*w
   perimeter=2*(l+w)
+  print()
   
   print("Area of Parallelogram : ",area)
   print("Perimeter of Parallelogram : ",perimeter)
@@ -60,6 +63,13 @@ def circle():
   clear()
   print("Circle")
   r=int(input("Enter Radius: "))
+  d=r+r
+  area=math.pi*r*r
+  perimeter=math.pi*d
+  print()
+  
+  print("Area of Circle : ",area)
+  print("Perimeter of Circle : ",perimeter)
 
 # ____________   MAIN  ________________
 print("Please select shape you want to use by typing in a number between 1 and 4")
