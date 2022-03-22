@@ -20,14 +20,18 @@ def shape_chooser():
     circle()
   else:
     print()
-    
+
+def in_values(side):
+  value=int(input(f"Enter {side}: "))
+  return value
+
 def triangle():
   clear()
   print("Triangle")
-  b=int(input("Enter Base : "))
-  s1=int(input("Enter Side 1: "))
-  s2=int(input("Enter Side 2: "))
-  h=int(input("Enter Height: "))
+  b=in_values("Base")
+  s1=in_values("Side 1")
+  s2=in_values("Side 2")
+  h=in_values("Height")
   area=0.5 * b * h
   perimeter=b+s1+s2
   print()
@@ -39,8 +43,8 @@ def triangle():
 def rectangle():
   clear()
   print("Rectangle")
-  l=int(input("Enter Length: "))
-  w=int(input("Enter Width: "))
+  l=in_values("Length")
+  w=in_values("Width")
   area=l*w
   perimeter=2*(l+w)
   print()
@@ -52,9 +56,9 @@ def rectangle():
 def parallel():
   clear()
   print("Parallelogram")
-  l=int(input("Enter Length: "))
-  w=int(input("Enter Width: "))
-  h=int(input("Enter Height: "))
+  l=in_values("Length")
+  w=in_values("Width")
+  h=in_values("Height")
   area=h*w
   perimeter=2*(l+w)
   print()
@@ -66,7 +70,7 @@ def parallel():
 def circle():
   clear()
   print("Circle")
-  r=int(input("Enter Radius: "))
+  r=in_values("Radius")
   d=r+r
   area=math.pi*r*r
   perimeter=math.pi*d
@@ -77,16 +81,19 @@ def circle():
   print()
 
 # ____________   MAIN  ________________
+shapes = ["triangle", "Rectangle / Square", "Parallelogram", "Circle"]
 keep_going = "yes"
 while keep_going == "yes":
   
 
   try:
+    
+      
     print("Please select shape you want to use by typing in a number between 1 and 4")
-    print("1 = Triangle")
-    print("2 = Rectangle / Square")
-    print("3 = Parallelogram")
-    print("4 = Circle")
+    i = 1
+    for x in shapes : 
+      print(i,"=", x)
+      i+= 1
     what_shape = int(input("Select: "))
   
     shape_chooser()
