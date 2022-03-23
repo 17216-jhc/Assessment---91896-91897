@@ -8,22 +8,25 @@ import math
 # ____________   FUNCTIONS ________________
 
 def clear():
-   print("\033[H\033[J", end="")
+   print("\033[H\033[J", end="") #clears the Console
 
 def shape_chooser():
   if what_shape == 1:
-    triangle()
+    triangle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
   elif what_shape == 2:
-    rectangle()
+    rectangle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
   elif what_shape == 3:
-    parallel()
+    parallel() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
   elif what_shape == 4:
-    circle()
+    circle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
   else:
+    print()
+    print("Sorry please enter a valid input")
     print()
 
 def in_values(side):
   value=float(input(f"Enter {side}: "))
+  
   return value
 
 def A(shape, final_area):
@@ -32,82 +35,81 @@ def A(shape, final_area):
 def P(shape, final_perimeter):
   print(f"Perimeter of {shape} : ",final_perimeter)
 
-def triangle():
-  clear()
+def triangle(): #def for finding the area of perimeter and area of a Triangle
+  clear() #clears the Console
   shape_chosen = "Triangle"
-  print(shape_chosen)
-  b=in_values("Base")
-  s1=in_values("Side 1")
-  s2=in_values("Side 2")
-  h=in_values("Height")
-  area=0.5 * b * h
-  perimeter=b+s1+s2
+  print(shape_chosen) #prints what shape they are finding at the top
+  b=in_values("Base") #asks user the Base of the shape and gets an input
+  s1=in_values("Side 1") #asks user the length of side 1 of the shape and gets an input
+  s2=in_values("Side 2") #asks user the length of side 2 of the shape and gets an input
+  h=in_values("Height") #asks user the height of the shape and gets an input
+  area=0.5 * b * h #calculates Area using base, height then halving
+  perimeter=b+s1+s2 #calculates perimeter using base, length of side 1 and length of side 2
   print()
   
-  A(shape_chosen, area)
-  P(shape_chosen, perimeter)
+  A(shape_chosen, area) #prints area
+  P(shape_chosen, perimeter) #prints Perimeter
   print()
 
-def rectangle():
-  clear()
+def rectangle(): #def for finding the area of perimeter and area of a rectangle
+  clear() #clears the Console
   shape_chosen = "Rectangle"
-  print(shape_chosen)
-  l=in_values("Length")
-  w=in_values("Width")
-  area=l*w
-  perimeter=2*(l+w)
+  print(shape_chosen) #prints what shape they are finding at the top
+  l=in_values("Length") #asks user the length of the shape and gets an input
+  w=in_values("Width")  #asks user the width of the shape and gets an input
+  area=l*w #calculates Area using length and width
+  perimeter=2*(l+w) #calculates perimeter using length and width
   print()
   
-  A(shape_chosen, area)
-  P(shape_chosen, perimeter)
+  A(shape_chosen, area) #prints area
+  P(shape_chosen, perimeter) #prints Perimeter
   print()
   
-def parallel():
-  clear()
+def parallel(): #def for finding the area of perimeter and area of a paralleogram
+  clear() #clears the Console
   shape_chosen = "Parallelogram"
-  print(shape_chosen)
-  l=in_values("Length")
-  w=in_values("Width")
-  h=in_values("Height")
-  area=h*w
-  perimeter=2*(l+w)
+  print(shape_chosen) #prints what shape they are finding at the top
+  l=in_values("Length")  #asks user the length of the shape and gets an input
+  w=in_values("Width") #asks user the width of the shape and gets an input
+  h=in_values("Height") #asks user the height of the shape and gets an input
+  area=h*w #calculates Area using height and width
+  perimeter=2*(l+w) #calculates perimeter using length and width
   print()
   
-  A(shape_chosen, area)
-  P(shape_chosen, perimeter)
+  A(shape_chosen, area) #prints area
+  P(shape_chosen, perimeter) #prints Perimeter
   print()
 
-def circle():
-  clear()
+def circle(): #def for finding the area of perimeter and area of a circle
+  clear() #clears the Console
   shape_chosen = "Circle"
-  print(shape_chosen)
-  r=in_values("Radius")
+  print(shape_chosen) #prints what shape they are finding at the top
+  r=in_values("Radius") #asks user the radius of the shape and gets an input
   d=r+r
-  area=math.pi*r*r
-  perimeter=math.pi*d
+  area=math.pi*r*r #calculates area using pi and the radius squared
+  perimeter=math.pi*d #calculates perimeter using pi and the diameter
   print()
 
-  A(shape_chosen, area)
-  P(shape_chosen, perimeter)
+  A(shape_chosen, area) #prints area
+  P(shape_chosen, perimeter) #prints Perimeter
   print()
 
 # ____________   MAIN  ________________
-shapes = ["triangle", "Rectangle / Square", "Parallelogram", "Circle"]
+shapes = ["triangle", "Rectangle / Square", "Parallelogram", "Circle"] #list of each shape they can calculate are and perimter of
 keep_going = "yes"
-while keep_going == "yes":
-  
 
-  try:
-    
-      
-    print("Please select shape you want to use by typing in a number between 1 and 4")
+while keep_going == "yes": #loops main code to stop invalid inputs
+  try: 
+    print("Please select shape you want to use by typing in a whole number between 1 and 4")
     i = 1
     for x in shapes : 
-      print(i,"=", x)
+      print(i,"=", x) #prints what number each shape correlates to
       i+= 1
-    what_shape = int(input("Select: "))
+    what_shape = int(input("Select: ")) #asks the user what shape they want to use
   
-    shape_chooser()
+    shape_chooser() #runs code to run what formulas are used and sides are inputted
     
   except ValueError:
+    print()
+    print("Sorry please enter a valid input")
     print()
