@@ -25,9 +25,17 @@ def shape_chooser():
     print()
 
 def in_values(side):
+  keep_going_2 = "yes"
   value=float(input(f"Enter {side}: "))
-  
-  return value
+  while keep_going_2 == "yes":
+    if value <0:
+      while True:
+        print("Please enter a positive value")
+        value=float(input(f"Enter {side}: "))
+        if value> 0:
+          break     
+    else:
+      return value
 
 def A(shape, final_area):
   print(f"Area of {shape} : ",final_area)
