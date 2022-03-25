@@ -21,27 +21,32 @@ def shape_chooser():
     circle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
   else:
     print()
-    print("Sorry please enter a valid input")
+    print("Sorry please enter a valid input #1")
     print()
 
 def in_values(side):
   keep_going_2 = "yes"
-  value=float(input(f"Enter {side}: "))
+  keep_going_3 = "yes"
   while keep_going_2 == "yes":
-    if value <0:
-      while True:
-        print("Please enter a positive value")
-        value=float(input(f"Enter {side}: "))
-        if value> 0:
-          break     
-    else:
-      return value
+    try:
+      value=float(input(f"Enter {side}: "))
+      while keep_going_3 == "yes":
+        if value <0:
+          while True:
+            print("Please enter a positive value")
+            value=float(input(f"Enter {side}: "))
+            if value> 0:
+              break     
+        else:
+          return value
+    except ValueError:
+      print("Please enter a Number")
 
 def A(shape, final_area):
-  print(f"Area of {shape} : ",final_area)
+  print(f"Area of {shape} : ",final_area) #prints the Area of shape
   
 def P(shape, final_perimeter):
-  print(f"Perimeter of {shape} : ",final_perimeter)
+  print(f"Perimeter of {shape} : ",final_perimeter) #Prints the perimter of shape
 
 def triangle(): #def for finding the area of perimeter and area of a Triangle
   clear() #clears the Console
@@ -114,10 +119,9 @@ while keep_going == "yes": #loops main code to stop invalid inputs
       print(i,"=", x) #prints what number each shape correlates to
       i+= 1
     what_shape = int(input("Select: ")) #asks the user what shape they want to use
-  
     shape_chooser() #runs code to run what formulas are used and sides are inputted
     
   except ValueError:
     print()
-    print("Sorry please enter a valid input")
+    print("Sorry please enter a valid input #2")
     print()
