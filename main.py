@@ -31,11 +31,11 @@ def in_values(side):
     try:
       value=float(input(f"Enter {side}: "))
       while keep_going_3 == "yes":
-        if value <0:
+        if value <=0:
           while True:
             print("Please enter a positive value")
             value=float(input(f"Enter {side}: "))
-            if value> 0:
+            if value > 0:
               break     
         else:
           return value
