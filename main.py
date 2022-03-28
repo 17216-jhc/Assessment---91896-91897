@@ -62,6 +62,10 @@ def triangle(): #def for finding the area of perimeter and area of a Triangle
     clear()
     print("Sorry, that Triangle is Impossible, please make the sum of any two sides equal atleast equal the third length")
     triangle()
+  elif h > s1 and s2 or h > s1 and b or h > s2 and b:
+    clear()
+    print("Sorry, that Triangle is Impossible, please make the height of the Triangle is not greater than two of the side lengths")
+    triangle()
   else:
     print()
   area=0.5 * b * h #calculates Area using base, height then halving
