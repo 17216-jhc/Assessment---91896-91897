@@ -6,18 +6,22 @@
 import math
 
 # ____________   FUNCTIONS ________________
-
 def clear():
    print("\033[H\033[J", end="") #clears the Console
 
 def shape_chooser():
   if what_shape == 1:
+    clear() #clears the Console
     triangle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
   elif what_shape == 2:
-    rectangle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
+    clear() #clears the Console
+    rectangle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle
   elif what_shape == 3:
+    clear() #clears the Console
     parallel() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
+    clear() #clears the Console
   elif what_shape == 4:
+    clear() #clears the Console
     circle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
   else:
     print()
@@ -48,14 +52,20 @@ def A(shape, final_area):
 def P(shape, final_perimeter):
   print(f"Perimeter of {shape} : ",final_perimeter) #Prints the perimter of shape
 
+    
 def triangle(): #def for finding the area of perimeter and area of a Triangle
-  clear() #clears the Console
   shape_chosen = "Triangle"
   print(shape_chosen) #prints what shape they are finding at the top
   b=in_values("Base") #asks user the Base of the shape and gets an input
   s1=in_values("Side 1") #asks user the length of side 1 of the shape and gets an input
   s2=in_values("Side 2") #asks user the length of side 2 of the shape and gets an input
   h=in_values("Height") #asks user the height of the shape and gets an input
+  if s1 + s2 < b or b + s1 < s2 or b + s2 < s1:
+    clear()
+    print("Sorry, that Triangle is Impossible, please input a possible triangle")
+    triangle()
+  else:
+    return
   area=0.5 * b * h #calculates Area using base, height then halving
   perimeter=b+s1+s2 #calculates perimeter using base, length of side 1 and length of side 2
   print()
@@ -65,7 +75,6 @@ def triangle(): #def for finding the area of perimeter and area of a Triangle
   print()
 
 def rectangle(): #def for finding the area of perimeter and area of a rectangle
-  clear() #clears the Console
   shape_chosen = "Rectangle"
   print(shape_chosen) #prints what shape they are finding at the top
   l=in_values("Length") #asks user the length of the shape and gets an input
@@ -79,7 +88,6 @@ def rectangle(): #def for finding the area of perimeter and area of a rectangle
   print()
   
 def parallel(): #def for finding the area of perimeter and area of a paralleogram
-  clear() #clears the Console
   shape_chosen = "Parallelogram"
   print(shape_chosen) #prints what shape they are finding at the top
   l=in_values("Length")  #asks user the length of the shape and gets an input
@@ -94,7 +102,6 @@ def parallel(): #def for finding the area of perimeter and area of a paralleogra
   print()
 
 def circle(): #def for finding the area of perimeter and area of a circle
-  clear() #clears the Console
   shape_chosen = "Circle"
   print(shape_chosen) #prints what shape they are finding at the top
   r=in_values("Radius") #asks user the radius of the shape and gets an input
