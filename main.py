@@ -24,9 +24,7 @@ def shape_chooser():
     clear() #clears the Console
     circle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
   else:
-    print()
-    print("Sorry please enter a valid input #1")
-    print()
+    print("\n Sorry please enter a valid input \n")
 
 def in_values(side):
   keep_going_2 = "yes"
@@ -62,13 +60,12 @@ def triangle(): #def for finding the area of perimeter and area of a Triangle
   h=in_values("Height") #asks user the height of the shape and gets an input
   if s1 + s2 < b or b + s1 < s2 or b + s2 < s1:
     clear()
-    print("Sorry, that Triangle is Impossible, please input a possible triangle")
+    print("Sorry, that Triangle is Impossible, please make the sum of any two sides equal atleast equal the third length")
     triangle()
   else:
-    return
+    print()
   area=0.5 * b * h #calculates Area using base, height then halving
   perimeter=b+s1+s2 #calculates perimeter using base, length of side 1 and length of side 2
-  print()
   
   A(shape_chosen, area) #prints area
   P(shape_chosen, perimeter) #prints Perimeter
@@ -93,6 +90,12 @@ def parallel(): #def for finding the area of perimeter and area of a paralleogra
   l=in_values("Length")  #asks user the length of the shape and gets an input
   w=in_values("Width") #asks user the width of the shape and gets an input
   h=in_values("Height") #asks user the height of the shape and gets an input
+  if l > h:
+    clear()
+    print("Sorry, that Parallelograms is Impossible, make the height input less than the length")
+    triangle()
+  else:
+    print()
   area=h*w #calculates Area using height and width
   perimeter=2*(l+w) #calculates perimeter using length and width
   print()
@@ -108,7 +111,7 @@ def circle(): #def for finding the area of perimeter and area of a circle
   d=r+r
   area=math.pi*r*r #calculates area using pi and the radius squared
   perimeter=math.pi*d #calculates perimeter using pi and the diameter
-  print()
+
 
   A(shape_chosen, area) #prints area
   P(shape_chosen, perimeter) #prints Perimeter
@@ -129,6 +132,4 @@ while keep_going == "yes": #loops main code to stop invalid inputs
     shape_chooser() #runs code to run what formulas are used and sides are inputted
     
   except ValueError:
-    print()
-    print("Sorry please enter a valid input #2")
-    print()
+    print("/n Sorry please enter a valid input /n")
