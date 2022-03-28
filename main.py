@@ -90,10 +90,10 @@ def parallel(): #def for finding the area of perimeter and area of a paralleogra
   l=in_values("Length")  #asks user the length of the shape and gets an input
   w=in_values("Width") #asks user the width of the shape and gets an input
   h=in_values("Height") #asks user the height of the shape and gets an input
-  if l > h:
+  if l < h:
     clear()
     print("Sorry, that Parallelograms is Impossible, make the height input less than the length")
-    triangle()
+    
   else:
     print()
   area=h*w #calculates Area using height and width
