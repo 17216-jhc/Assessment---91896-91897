@@ -19,7 +19,6 @@ def shape_chooser():
   elif what_shape == 3:
     clear() #clears the Console
     parallel() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
-    clear() #clears the Console
   elif what_shape == 4:
     clear() #clears the Console
     circle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
@@ -45,10 +44,10 @@ def in_values(side):
       print("Please enter a Number")
 
 def A(shape, final_area):
-  print(f"Area of {shape} : ",final_area) #prints the Area of shape
+  print(f"Area of {shape} : ",round(final_area, 4)) #prints the Area of shape
   
 def P(shape, final_perimeter):
-  print(f"Perimeter of {shape} : ",final_perimeter) #Prints the perimter of shape
+  print(f"Perimeter of {shape} : ", round(final_perimeter, 4)) #Prints the perimter of shape
 
     
 def triangle(): #def for finding the area of perimeter and area of a Triangle
@@ -58,9 +57,9 @@ def triangle(): #def for finding the area of perimeter and area of a Triangle
   s1=in_values("Side 1") #asks user the length of side 1 of the shape and gets an input
   s2=in_values("Side 2") #asks user the length of side 2 of the shape and gets an input
   h=in_values("Height") #asks user the height of the shape and gets an input
-  if s1 + s2 < b or b + s1 < s2 or b + s2 < s1:
+  if s1 + s2 <= b or b + s1 <= s2 or b + s2 <= s1:
     clear()
-    print("Sorry, that Triangle is Impossible, please make the sum of any two sides equal atleast equal the third length")
+    print("Sorry, that Triangle is Impossible, please make the sum of any two sides equal more than the third length")
     triangle()
   elif h > s1 and s2 or h > s1 and b or h > s2 and b:
     clear()
@@ -97,6 +96,7 @@ def parallel(): #def for finding the area of perimeter and area of a paralleogra
   if l < h:
     clear()
     print("Sorry, that Parallelograms is Impossible, make the height input less than the length")
+    parallel()
     
   else:
     print()
