@@ -34,14 +34,14 @@ def in_values(side):
       while keep_going_3 == "yes":
         if value <=0:
           while True:
-            print("Please enter a positive value")
+            print("Please Enter a Positive Value")
             value=float(input(f"Enter {side}: "))
             if value > 0:
               break     
         else:
           return value
     except ValueError:
-      print("Please enter a Number")
+      print("Please enter a Valid Number - EG: 5")
 
 def A(shape, final_area):
   print(f"Area of {shape} : ",round(final_area, 4)) #prints the Area of shape
@@ -59,11 +59,11 @@ def triangle(): #def for finding the area of perimeter and area of a Triangle
   h=in_values("Height") #asks user the height of the shape and gets an input
   if s1 + s2 <= b or b + s1 <= s2 or b + s2 <= s1:
     clear()
-    print("Sorry, that Triangle is Impossible, please make the sum of any two sides equal more than the third length")
+    print("Sorry, that Triangle is Impossible, Please make the Sum of any Two Sides Equal More than the Third Length")
     triangle()
   elif h > s1 and s2 or h > s1 and b or h > s2 and b:
     clear()
-    print("Sorry, that Triangle is Impossible, please make the height of the Triangle is not greater than two of the side lengths")
+    print("Sorry, that Triangle is Impossible, Please make the Height of the Triangle is not Greater than two of the side lengths")
     triangle()
   else:
     print()
@@ -95,7 +95,7 @@ def parallel(): #def for finding the area of perimeter and area of a paralleogra
   h=in_values("Height") #asks user the height of the shape and gets an input
   if l < h:
     clear()
-    print("Sorry, that Parallelograms is Impossible, make the height input less than the length")
+    print("Sorry, that Parallelograms is Impossible, make the Height input Less than the Length")
     parallel()
     
   else:
@@ -122,7 +122,7 @@ def circle(): #def for finding the area of perimeter and area of a circle
   print()
 
 # ____________   MAIN  ________________
-shapes = ["triangle", "Rectangle / Square", "Parallelogram", "Circle"] #list of each shape they can calculate are and perimter of
+shapes = ["\033[4;37;1m Triangle \033[0m ", "\033[4;37;1m Rectangle / Square \033[0m ", "\033[4;37;1m Parallelogram \033[0m ", "\033[4;37;1m Circle \033[0m "] #list of each shape they can calculate are and perimter of
 keep_going = "yes"
 
 while keep_going == "yes": #loops main code to stop invalid inputs
