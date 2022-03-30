@@ -4,6 +4,7 @@
 
 # ____________   IMPORTS ________________
 import math
+from math import sin, radians
 
 # ____________   FUNCTIONS ________________
 def clear():
@@ -67,6 +68,12 @@ def triangle(): #def for finding the area of perimeter and area of a Triangle
     triangle()
   else:
     print()
+  x = float(math.acos((s1*s1+s2*s2-b*b)/(2*s1*s2)))
+  print(x)
+  
+  h_2 = sin(x) * s1
+  print(h_2)
+  
   area=0.5 * b * h #calculates Area using base, height then halving
   perimeter=b+s1+s2 #calculates perimeter using base, length of side 1 and length of side 2
   
@@ -136,4 +143,4 @@ while keep_going == "yes": #loops main code to stop invalid inputs
     shape_chooser() #runs code to run what formulas are used and sides are inputted
     
   except ValueError:
-    print("/n Sorry please enter a valid input /n")
+    print("\n Sorry please enter a valid input \n")
