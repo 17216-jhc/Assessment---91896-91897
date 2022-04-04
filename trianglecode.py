@@ -28,47 +28,53 @@ def trianglecode():
     tbox_area.insert(tk.END,area)
     tbox_area.config(state='disabled')
   
-  def display_perim():
+  def display_perim(perimeter):
     tbox_perim.config(state='normal')
+    #area calculated is inserted into the text box after clearing the previous info in the textbox. 
+    tbox_perim.delete('1.0', tk.END)
+    tbox_perim.insert(tk.END,perimeter)
+    tbox_perim.config(state='disabled')
 
   def validation(): 
     # gets the three entries
     s_1 = side_1.get()
     s_2 = side_2.get()
     s_3 = side_3.get()
-
-    s1 = float(s_1)
-    s2 = float(s_2)
-    s3 = float(s_3)
     
     msg = ''
     
     if len(s_1) == 0 or len (s_2) == 0 or len (s_3) == 0: #checks if the number of characters in the input boxes = 0
       msg = 'Please Do Not leave any Input Boxes Empty'
+      calc_area = ' ' #clears the Calc Area box
+      display_area(calc_area)
+      calc_perim = ' ' #clears the Calc Perimeter box
+      display_perim(calc_perim)
 
     else:
       try:
         if any(ch.isdigit() for ch in s_1) == False or any(ch.isdigit() for ch in s_2) == False or any(ch.isdigit() for ch in s_3) == False:
           msg = 'Side length must be a NUMBER, EG: 5, not "five" or "fifth"'
-          print("1")
-          calc_area = ' ' #clears the Calc age box
-          print("2")
+          calc_area = ' ' #clears the Calc Area box
           display_area(calc_area)
-          print("3")
+          calc_perim = ' ' #clears the Calc Perimeter box
+          display_perim(calc_perim)
         else:
-          print("5")
-          msg = 'Success!'
+          #--- Add -ve num checker ----
+          s1 = float(s_1)
+          s2 = float(s_2)
+          s3 = float(s_3)
           if (s1 + s2) <= s3 or (s3 + s1) <= s2 or (s3 + s2) <= s1:
             msg = 'Sorry, that Triangle is Impossible, Please make the Sum of any Two Sides Equal More than the Third Length'
-            calc_area = '' #clears the Calc age box
+            calc_area = ' ' #clears the Calc Area box
             display_area(calc_area)
+            calc_perim = ' ' #clears the Calc Perimeter box
+            display_perim(calc_perim)
           else:
-            print("6")
             calc_area= find_area(s1, s2, s3)
             display_area(calc_area)
-            print("7")
+            calc_perim = find_perim(s1, s2, s3)
+            display_perim(calc_perim)
       except Exception as ep:
-        print("4")
         messagebox.showerror('error', ep)
         print(ep)
 
