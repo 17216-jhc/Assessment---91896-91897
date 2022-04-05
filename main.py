@@ -41,28 +41,6 @@ def display_calc_area():
   tbox_area.delete('1.0', tk.END)
   tbox_area.insert(tk.END,age)
   tbox_area.config(state='disabled')
-  
-def shape_chooser():
-  if what_shape == 1:
-    clear() #clears the Console
-    triangle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
-  elif what_shape == 2:
-    clear() #clears the Console
-    rectangle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle
-  elif what_shape == 3:
-    clear() #clears the Console
-    parallel() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
-  elif what_shape == 4:
-    clear() #clears the Console
-    circle() #runs code to get user to input sides of the shape and calculates perimter and area of triangle 
-  else:
-    print("\n Sorry please enter a valid input \n")
-
-def A(shape, final_area):
-  print(f"Area of {shape} : ",round(final_area, 4)) #prints the Area of shape
-  
-def P(shape, final_perimeter):
-  print(f"Perimeter of {shape} : ", round(final_perimeter, 4)) #Prints the perimter of shape
 
 
 def rectangle(): #def for finding the area of perimeter and area of a rectangle

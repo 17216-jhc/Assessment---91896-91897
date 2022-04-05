@@ -13,13 +13,17 @@ def clearBox(self):
   # ____________   TRIANGLE WINDOW  ________________
 def trianglecode():
   def find_perim(s1, s2, s3):
-    perimeter=s1+s2+s3 #calculates perimeter using base, length of side 1 and length of side 2
+    p=s1+s2+s3 #calculates perimeter using base, length of side 1 and length of side 2
+    perimeter=round(p, 3)
     return perimeter
+
   def find_area(s1, s2, s3):
     x = float(math.acos((s1*s1+s2*s2-s3*s3)/(2*s1*s2)))
     height = float(sin(x) * s1)
-    area=0.5 * s2 * height #calculates Area using base, height then halving
+    a=0.5 * s2 * height #calculates Area using base, height then halving
+    area = round(a, 3)
     return area
+
   def display_area(area):
     tbox_area.config(state='normal')
 
@@ -49,7 +53,7 @@ def trianglecode():
       display_area(calc_area)
       calc_perim = ' ' #clears the Calc Perimeter box
       display_perim(calc_perim)
-
+      
     else:
       try:
         if any(ch.isdigit() for ch in s_1) == False or any(ch.isdigit() for ch in s_2) == False or any(ch.isdigit() for ch in s_3) == False:
@@ -58,17 +62,27 @@ def trianglecode():
           display_area(calc_area)
           calc_perim = ' ' #clears the Calc Perimeter box
           display_perim(calc_perim)
+          
         else:
           #--- Add -ve num checker ----
           s1 = float(s_1)
           s2 = float(s_2)
           s3 = float(s_3)
-          if (s1 + s2) <= s3 or (s3 + s1) <= s2 or (s3 + s2) <= s1:
+
+          if s1 <= 0 or s2 <= 0 or s3 <= 0:
+            msg = 'Please Do Not Input a Negative length'
+            calc_area = ' ' #clears the Calc Area box
+            display_area(calc_area)
+            calc_perim = ' ' #clears the Calc Perimeter box
+            display_perim(calc_perim)
+          
+          elif (s1 + s2) <= s3 or (s3 + s1) <= s2 or (s3 + s2) <= s1:
             msg = 'Sorry, that Triangle is Impossible, Please make the Sum of any Two Sides Equal More than the Third Length'
             calc_area = ' ' #clears the Calc Area box
             display_area(calc_area)
             calc_perim = ' ' #clears the Calc Perimeter box
             display_perim(calc_perim)
+            
           else:
             calc_area= find_area(s1, s2, s3)
             display_area(calc_area)
@@ -102,9 +116,9 @@ def trianglecode():
 
   lb_perim = tk.Label(window,font=("Arial",13),text="Perimeter Calculated:" ,fg="black",bg="#858585")
 
-  tbox_area=tk.Text(window,width=5,height=1,state="disabled",font=('Arial',24,"bold"))
+  tbox_area=tk.Text(window,width=6,height=1,state="disabled",font=('Arial',24,"bold"))
   
-  tbox_perim=tk.Text(window,width=5,height=1,state="disabled",font=('Arial',24,"bold"))
+  tbox_perim=tk.Text(window,width=6,height=1,state="disabled",font=('Arial',24,"bold"))
     
    # Entry boxes for date, month and year
   side_1 = tk.Entry(window,width=15)
