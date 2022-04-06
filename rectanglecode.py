@@ -39,8 +39,8 @@ def rectanglecode():
 
   def validation(): 
     # gets the three entries
-    w = width.get()
     l = length.get()
+    w = width.get()
     
     msg = ''
     
