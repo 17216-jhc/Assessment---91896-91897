@@ -10,7 +10,7 @@ from main import *
 def clearBox(self):
     self.txt1.delete("1.0", "end")
   
-  # ____________   TRIANGLE WINDOW  ________________
+  # ____________   rectangle WINDOW  ________________
 def rectanglecode():
   def find_perim(l, w):
     p= 2*w + 2*l#calculates perimeter using base, length of side 1 and length of side 2
@@ -88,11 +88,11 @@ def rectanglecode():
   window.geometry("500x380")
   window.config(bg="#858585")
   window.resizable(width=False,height=False)
-  window.title('Triangle')
+  window.title('Rectangle')
   
   # Labels for Heading and Subheadng of GUI
-  lb_heading = tk.Label(window,text="Triangle Area and Perimeter \n Calculator",font=("Arial", 20),fg="black",bg="#858585")
-  lb_subheading = tk.Label(window,font=("Arial",11),text="Please input the side lengths of the Rectangle / Square you want to find\nthe Area and Perimeter of.." ,fg="black",bg="#858585")
+  lb_heading = tk.Label(window,text="Rectangle / Square\nArea and Perimeter Calculator",font=("Arial", 20),fg="black",bg="#858585")
+  lb_subheading = tk.Label(window,font=("Arial",11),text="Please input the side lengths of the Rectangle / Square you\nwant to findthe Area and Perimeter of.." ,fg="black",bg="#858585")
 
   lb_length = tk.Label(window,font=("Arial",11),text="Length" ,fg="black",bg="#858585")
 
@@ -111,7 +111,7 @@ def rectanglecode():
   
   width = tk.Entry(window,width=15)
   
-  # Button to Open Triangle window
+  # Button to Open rectangle window
   btn_calculate = tk.Button(window,text="Calculate Area and Perimeter",font=("Arial",11), command=validation)
 
   # Button to exit application
@@ -126,8 +126,8 @@ def rectanglecode():
   lb_perim.place(x=290,y=220)
   tbox_area.place(x=290,y=165)
   tbox_perim.place(x=290,y=255)
-  length.place(x=140,y=195)
-  width.place(x=140,y=245)
+  length.place(x=120,y=195)
+  width.place(x=120,y=245)
   btn_calculate.place(x=22,y=327)
   btn_exit.place(x=290,y=313)
   
