@@ -64,7 +64,6 @@ def trianglecode():
           display_perim(calc_perim)
           
         else:
-          #--- Add -ve num checker ----
           s1 = float(s_1)
           s2 = float(s_2)
           s3 = float(s_3)

@@ -27,6 +27,8 @@ def opentriwindow():
   
 def openrectwindow():
   rectanglecode()
+  global window
+  window.destroy()
 
 def openparallelwindow():
   parallelogramcode()
