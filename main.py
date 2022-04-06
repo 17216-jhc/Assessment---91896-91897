@@ -103,16 +103,16 @@ lb_heading = tk.Label(window,text="The Area and Perimeter Calculator",font=("Ari
 lb_subheading = tk.Label(window,font=("Arial",11),text="Click on What Shape you want to find the Area and perimeter of..",fg="black",bg="#858585")
 
 # Button to Open Triangle window
-btn_calculate_triangle = tk.Button(window,text="Triangle",font=("Arial",13), command=lambda:[window.destroy(), opentriwindow()])
+btn_calculate_triangle = tk.Button(window,text="Triangle",font=("Arial",13), command=lambda:[opentriwindow()])
 
 # Button to Open Rectangle window
-btn_calculate_rectangle = tk.Button(window,text="Rectangle / Square",font=("Arial",13), command=lambda:[openrectwindow(), exit])
+btn_calculate_rectangle = tk.Button(window,text="Rectangle / Square",font=("Arial",13), command=lambda:[openrectwindow()])
 
 # Button to Open Parallelogram window
-btn_calculate_parallelogram = tk.Button(window,text="Parallelogram",font=("Arial",13),command=lambda:[openparallelwindow(), exit])
+btn_calculate_parallelogram = tk.Button(window,text="Parallelogram",font=("Arial",13),command=lambda:[openparallelwindow()])
 
 # Button to Open Circle window
-btn_calculate_circle = tk.Button(window,text="Circle",font=("Arial",13),command=lambda:[opencircwindow(), exit])
+btn_calculate_circle = tk.Button(window,text="Circle",font=("Arial",13),command=lambda:[opencircwindow()])
 
 # Placing the elements on the screen with co-ords
 lb_heading.place(x=15,y=5)

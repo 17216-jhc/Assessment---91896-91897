@@ -128,14 +128,14 @@ def trianglecode():
   side_3 = tk.Entry(window,width=15)
   
   # Button to Open Triangle window
-  btn_calculate_triangle = tk.Button(window,text="Calculate Area and Perimeter",font=("Arial",11), command=validation)
+  btn_calculate = tk.Button(window,text="Calculate Area and Perimeter",font=("Arial",11), command=validation)
 
   # Button to exit application
   btn_exit = tk.Button(window,text="Return to\nShape Chooser",font=("Arial",13),command=window.destroy)
   
   # Placing the elements on the screen with co-ords
   lb_heading.place(x=55,y=5)
-  lb_subheading.place(x=22,y=75)
+  lb_subheading.place(x=22,y=80)
   lb_base.place(x=20,y=165)
   lb_side_1.place(x=20,y=220)
   lb_side_2.place(x=20,y=275)
@@ -146,6 +146,6 @@ def trianglecode():
   side_1.place(x=140,y=165)
   side_2.place(x=140,y=220)
   side_3.place(x=140,y=275)
-  btn_calculate_triangle.place(x=22,y=327)
+  btn_calculate.place(x=22,y=327)
   btn_exit.place(x=290,y=313)
   

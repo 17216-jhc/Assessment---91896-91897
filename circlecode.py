@@ -42,20 +42,20 @@ def circlecode():
   radius = tk.Entry(window,width=15)
   
   # Button to Open Circle window
-  btn_calculate_Circle = tk.Button(window,text="Calculate Area and Perimeter",font=("Arial",11))
+  btn_calculate = tk.Button(window,text="Calculate Area and Perimeter",font=("Arial",11))
 
   # Button to exit application
   btn_exit = tk.Button(window,text="Return to\nShape Chooser",font=("Arial",13),command=window.destroy)
   
   # Placing the elements on the screen with co-ords
   lb_heading.place(x=55,y=5)
-  lb_subheading.place(x=22,y=75)
+  lb_subheading.place(x=22,y=80)
   lb_radius.place(x=20,y=210)
   lb_area.place(x=290,y=130)
   lb_perim.place(x=290,y=220)
   tbox_area.place(x=290,y=165)
   tbox_perim.place(x=290,y=255)
   radius.place(x=140,y=210)
-  btn_calculate_Circle.place(x=22,y=327)
+  btn_calculate.place(x=22,y=327)
   btn_exit.place(x=290,y=313)
   

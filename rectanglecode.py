@@ -46,22 +46,22 @@ def rectanglecode():
   width = tk.Entry(window,width=15)
   
   # Button to Open Square window
-  btn_calculate_square = tk.Button(window,text="Calculate Area and Perimeter",font=("Arial",11))
+  btn_calculate = tk.Button(window,text="Calculate Area and Perimeter",font=("Arial",11))
 
   # Button to exit application
   btn_exit = tk.Button(window,text="Return to\nShape Chooser",font=("Arial",13),command=window.destroy)
   
   # Placing the elements on the screen with co-ords
   lb_heading.place(x=55,y=5)
-  lb_subheading.place(x=22,y=75)
-  lb_length.place(x=20,y=175)
-  lb_width.place(x=20,y=215)
+  lb_subheading.place(x=22,y=80)
+  lb_length.place(x=20,y=195)
+  lb_width.place(x=20,y=245)
   lb_area.place(x=290,y=130)
   lb_perim.place(x=290,y=220)
   tbox_area.place(x=290,y=165)
   tbox_perim.place(x=290,y=255)
-  length.place(x=90,y=175)
-  width.place(x=90,y=215)
-  btn_calculate_square.place(x=22,y=327)
+  length.place(x=90,y=195)
+  width.place(x=90,y=245)
+  btn_calculate.place(x=22,y=327)
   btn_exit.place(x=290,y=313)
   
