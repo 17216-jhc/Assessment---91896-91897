@@ -13,13 +13,13 @@ def clearBox(self):
   # ____________   rectangle WINDOW  ________________
 def rectanglecode():
   def find_perim(l, w):
-    p= 2*w + 2*l#calculates perimeter using base, length of side 1 and length of side 2
-    perimeter=round(p, 3)
+    p= 2*w + 2*l#calculates perimeter using width and length
+    perimeter=round(p, 3) #rounds calculated perimeter to 3 DP
     return perimeter
 
   def find_area(l, w):
-    a=l * w #calculates Area using base, height then halving
-    area = round(a, 3)
+    a=l * w #calculates Area using length and width
+    area = round(a, 3) #rounds calculated area to 3DP
     return area
 
   def display_area(area):
@@ -38,51 +38,53 @@ def rectanglecode():
     tbox_perim.config(state='disabled')
 
   def validation(): 
-    # gets the three entries
+    # gets the two entries
     l = length.get()
     w = width.get()
     
-    msg = ''
+    msg = '' #makes the message box 'clear'
     
     if len(l) == 0 or len (w) == 0: #checks if the number of characters in the input boxes = 0
-      msg = 'Please Do Not leave any Input Boxes Empty'
+      msg = 'Please Do Not leave any Input Boxes Empty' #Inputs the error message that pops up
       calc_area = ' ' #clears the Calc Area box
-      display_area(calc_area)
+      display_area(calc_area) #clears calc area box by printing the cleared the Calc Area box
       calc_perim = ' ' #clears the Calc Perimeter box
-      display_perim(calc_perim)
+      display_perim(calc_perim)  #clears calc perim box by printing the cleared the Calc Perimeter box
       
     else:
       try:
-        if any(ch.isdigit() for ch in l) == False or any(ch.isdigit() for ch in w) == False:
-          msg = 'Side length must be a NUMBER, EG: 5, not "five" or "fifth"'
+        if any(ch.isdigit() for ch in l) == False or any(ch.isdigit() for ch in w) == False: #checks if the sides inputted by user contain letters or symbols (str)
+          msg = 'Side length must be a NUMBER, EG: 5, not "five" or "fifth"' #Inputs the error message that pops up
           calc_area = ' ' #clears the Calc Area box
-          display_area(calc_area)
+          display_area(calc_area) #clears calc area box by printing the cleared the Calc Area box
           calc_perim = ' ' #clears the Calc Perimeter box
-          display_perim(calc_perim)
+          display_perim(calc_perim) #clears calc perim box by printing the cleared the Calc Perimeter box
           
         else:
+          #converting sidce lengths to float
           l = float(l)
           w = float(w)
 
-          if l <= 0 or w <= 0:
-            msg = 'Please Do Not Input a Negative length'
+          if l <= 0 or w <= 0: #checks that the side lengths inputted are greater than 0
+            msg = 'Please Do Not Input a Negative length' #Inputs the error message that pops up
             calc_area = ' ' #clears the Calc Area box
-            display_area(calc_area)
+            display_area(calc_area) #clears calc area box by printing the cleared the Calc Area box
             calc_perim = ' ' #clears the Calc Perimeter box
-            display_perim(calc_perim)
+            display_perim(calc_perim) #clears calc perim box by printing the cleared the Calc Perimeter box
             
           else:
-            calc_area= find_area(l, w)
-            display_area(calc_area)
-            calc_perim = find_perim(l, w)
-            display_perim(calc_perim)
+            calc_area= find_area(l, w) #calculates area using length and width
+            display_area(calc_area) #displays calculated area
+            calc_perim = find_perim(l, w) #calculates perimeter using length and width
+            display_perim(calc_perim) #displays calculated perimeter
+            
       except Exception as ep:
-        messagebox.showerror('error', ep)
-        print(ep)
+        messagebox.showerror('error', ep) #prints and error message to tell the user and error happened according to the syntax error
 
     
     if msg != '':
-      messagebox.showinfo('message', msg)
+      messagebox.showinfo('message', msg) #program checks if message box is clear and if not prints message box with new data
+      
   # Creating a custom window
   window = tk.Tk()
   window.geometry("500x380")
@@ -94,6 +96,7 @@ def rectanglecode():
   lb_heading = tk.Label(window,text="Rectangle / Square\nArea and Perimeter Calculator",font=("Arial", 20),fg="black",bg="#858585")
   lb_subheading = tk.Label(window,font=("Arial",11),text="Please input the side lengths of the Rectangle / Square you\nwant to findthe Area and Perimeter of.." ,fg="black",bg="#858585")
 
+   #labels for side length inputs and text boxes
   lb_length = tk.Label(window,font=("Arial",11),text="Length" ,fg="black",bg="#858585")
 
   lb_width = tk.Label(window,font=("Arial",11),text="Width" ,fg="black",bg="#858585")
@@ -106,7 +109,7 @@ def rectanglecode():
   
   tbox_perim=tk.Text(window,width=6,height=1,state="disabled",font=('Arial',24,"bold"))
     
-   # Entry boxes for date, month and year
+   # Entry boxes for length and width
   length = tk.Entry(window,width=15)
   
   width = tk.Entry(window,width=15)

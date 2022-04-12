@@ -16,81 +16,21 @@ from circlecode import *
 
 
 # ____________   FUNCTIONS ________________
-def clear():
-   print("\033[H\033[J", end="") #clears the Console
-
 def clearBox(self):
     self.txt1.delete("1.0", "end")
 
 def opentriwindow():
-  trianglecode()
+  trianglecode() #runs code that opens new window that has triagnle length inputs and calculate area and perimeter button as well as calculated and displayed area and perimeter
   
 def openrectwindow():
-  rectanglecode()
+  rectanglecode() #runs code that opens new window that has rectangle length inputs and calculate area and perimeter button as well as calculated and displayed area and perimeter
   global window
-  window.destroy()
 
 def openparallelwindow():
-  parallelogramcode()
+  parallelogramcode() #runs code that opens new window that has parallelogram length inputs and calculate area and perimeter button as well as calculated and displayed area and perimeter
 
-def opencircwindow():
-  circlecode()
-
-def display_calc_area():
-  tbox_area.config(state='normal')
-
-    #age calculated is inserted into the text box after clearing the previous info in the textbox. 
-  tbox_area.delete('1.0', tk.END)
-  tbox_area.insert(tk.END,age)
-  tbox_area.config(state='disabled')
-
-
-def rectangle(): #def for finding the area of perimeter and area of a rectangle
-  shape_chosen = "Rectangle"
-  print(shape_chosen) #prints what shape they are finding at the top
-  l=in_values("Length") #asks user the length of the shape and gets an input
-  w=in_values("Width")  #asks user the width of the shape and gets an input
-  area=l*w #calculates Area using length and width
-  perimeter=2*(l+w) #calculates perimeter using length and width
-  print()
-  
-  A(shape_chosen, area) #prints area
-  P(shape_chosen, perimeter) #prints Perimeter
-  print()
-  
-def parallel(): #def for finding the area of perimeter and area of a paralleogram
-  shape_chosen = "Parallelogram"
-  print(shape_chosen) #prints what shape they are finding at the top
-  l=in_values("Length")  #asks user the length of the shape and gets an input
-  w=in_values("Width") #asks user the width of the shape and gets an input
-  h=in_values("Height") #asks user the height of the shape and gets an input
-  if l < h:
-    clear()
-    print("Sorry, that Parallelograms is Impossible, make the Height input Less than the Length")
-    parallel()
-    
-  else:
-    print()
-  area=h*w #calculates Area using height and width
-  perimeter=2*(l+w) #calculates perimeter using length and width
-  print()
-  
-  A(shape_chosen, area) #prints area
-  P(shape_chosen, perimeter) #prints Perimeter
-  print()
-
-def circle(): #def for finding the area of perimeter and area of a circle
-  shape_chosen = "Circle"
-  print(shape_chosen) #prints what shape they are finding at the top
-  r=in_values("Radius") #asks user the radius of the shape and gets an input
-  d=r+r
-  area=math.pi*r*r #calculates area using pi and the radius squared
-  perimeter=math.pi*d #calculates perimeter using pi and the diameter
-
-
-  A(shape_chosen, area) #prints area
-  P(shape_chosen, perimeter) #prints Perimeter
-  print()
+def opencircwindow(): 
+  circlecode() #runs code that opens new window that has circle radius input and calculate area and circumference button as well as calculated and displayed area and perimeter
 
 # ____________   MAIN  ________________
   # Creating a custom window
