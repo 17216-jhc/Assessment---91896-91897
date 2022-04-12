@@ -3,16 +3,16 @@
 #https://www.code4example.com/python/python-program-to-calculate-area-and-perimeter-of-triangle/
 
 # ____________   IMPORTS ________________
-import math
-from main import *
-from math import sin, radians
+import math #import to be able to use pi in calculations
+from main import * #import to be able to use pi and acos in calculations
+from math import sin, radians #import to be able to use sin and radians in calculations
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox #importing message box to display errors
 from tkinter import ttk
-from trianglecode import *
-from rectanglecode import *
-from parallelogramcode import *
-from circlecode import *
+from trianglecode import * #importing 'def trianglecode():'
+from rectanglecode import * #importing 'def rectanglecode():'
+from parallelogramcode import * #importing 'def parallelogramcode():'
+from circlecode import * #importing 'def circlecode():'
 
 
 # ____________   FUNCTIONS ________________
@@ -35,7 +35,7 @@ def opencircwindow():
 # ____________   MAIN  ________________
   # Creating a custom window
 window = tk.Tk()
-window.geometry("500x230")
+window.geometry("500x280")
 window.config(bg="#858585")
 window.resizable(width=False,height=False)
 window.title('Area and Perimeter Calculator')
@@ -56,6 +56,9 @@ btn_calculate_parallelogram = tk.Button(window,text="Parallelogram",font=("Arial
 # Button to Open Circle window
 btn_calculate_circle = tk.Button(window,text="Circle",font=("Arial",13),command=lambda:[opencircwindow()])
 
+# Button to exit application
+btn_exit = tk.Button(window,text="Exit Application",font=("Arial",13),command=exit)
+
 # Placing the elements on the screen with co-ords
 lb_heading.place(x=15,y=5)
 lb_subheading.place(x=5,y=55)
@@ -63,3 +66,4 @@ btn_calculate_triangle.place(x=50,y=105)
 btn_calculate_rectangle.place(x=140,y=170)
 btn_calculate_parallelogram.place(x=305,y=105)
 btn_calculate_circle.place(x=190,y=105)
+btn_exit.place(x=155,y=230)
