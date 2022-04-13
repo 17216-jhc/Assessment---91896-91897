@@ -1,90 +1,81 @@
 #_____ IMPORTS ______
-import tkinter as tk
-from tkinter import messagebox
-from tkinter import ttk
-from main import *
-
-
+from main import * #importing imports from main
 
 #_____ DEFINITIONS _____
-def clearBox(self):
-    self.txt1.delete("1.0", "end")
-  
-  # ____________   rectangle WINDOW  ________________
-def rectanglecode():
-  def find_perim(l, w):
+def find_perim(l, w):
     p= 2*w + 2*l#calculates perimeter using width and length
-    perimeter=round(p, 3) #rounds calculated perimeter to 3 DP
+    perimeter=round(p, 2) #rounds calculated perimeter to 2DP
     return perimeter
 
-  def find_area(l, w):
-    a=l * w #calculates Area using length and width
-    area = round(a, 3) #rounds calculated area to 3DP
-    return area
+def find_area(l, w):
+  a=l * w #calculates Area using length and width
+  area = round(a, 2) #rounds calculated area to 2DP
+  return area
 
-  def display_area(area):
-    tbox_area.config(state='normal')
+def display_area(area):
+  tbox_area.config(state='normal')
 
-    #area calculated is inserted into the text box after clearing the previous info in the textbox. 
-    tbox_area.delete('1.0', tk.END)
-    tbox_area.insert(tk.END,area)
-    tbox_area.config(state='disabled')
+  #area calculated is inserted into the text box after clearing the previous info in the textbox. 
+  tbox_area.delete('1.0', tk.END)
+  tbox_area.insert(tk.END,area)
+  tbox_area.config(state='disabled')
+
+def display_perim(perimeter):
+  tbox_perim.config(state='normal')
+  #area calculated is inserted into the text box after clearing the previous info in the textbox. 
+  tbox_perim.delete('1.0', tk.END)
+  tbox_perim.insert(tk.END,perimeter)
+  tbox_perim.config(state='disabled')
+
+def validation(): 
+  # gets the two entries
+  l = length.get()
+  w = width.get()
   
-  def display_perim(perimeter):
-    tbox_perim.config(state='normal')
-    #area calculated is inserted into the text box after clearing the previous info in the textbox. 
-    tbox_perim.delete('1.0', tk.END)
-    tbox_perim.insert(tk.END,perimeter)
-    tbox_perim.config(state='disabled')
+  msg = '' #makes the message box 'clear'
+  
+  if len(l) == 0 or len (w) == 0: #checks if the number of characters in the input boxes = 0
+    msg = 'Please Do Not leave any Input Boxes Empty' #Inputs the error message that pops up
+    calc_area = ' ' #clears the Calc Area box
+    display_area(calc_area) #clears calc area box by printing the cleared the Calc Area box
+    calc_perim = ' ' #clears the Calc Perimeter box
+    display_perim(calc_perim)  #clears calc perim box by printing the cleared the Calc Perimeter box
+    
+  else:
+    try:
+      if any(ch.isdigit() for ch in l) == False or any(ch.isdigit() for ch in w) == False: #checks if the sides inputted by user contain letters or symbols (str)
+        msg = 'Side length must be a NUMBER, EG: 5, not "five" or "fifth"' #Inputs the error message that pops up
+        calc_area = ' ' #clears the Calc Area box
+        display_area(calc_area) #clears calc area box by printing the cleared the Calc Area box
+        calc_perim = ' ' #clears the Calc Perimeter box
+        display_perim(calc_perim) #clears calc perim box by printing the cleared the Calc Perimeter box
+        
+      else:
+        #converting sidce lengths to float
+        l = float(l)
+        w = float(w)
 
-  def validation(): 
-    # gets the two entries
-    l = length.get()
-    w = width.get()
-    
-    msg = '' #makes the message box 'clear'
-    
-    if len(l) == 0 or len (w) == 0: #checks if the number of characters in the input boxes = 0
-      msg = 'Please Do Not leave any Input Boxes Empty' #Inputs the error message that pops up
-      calc_area = ' ' #clears the Calc Area box
-      display_area(calc_area) #clears calc area box by printing the cleared the Calc Area box
-      calc_perim = ' ' #clears the Calc Perimeter box
-      display_perim(calc_perim)  #clears calc perim box by printing the cleared the Calc Perimeter box
-      
-    else:
-      try:
-        if any(ch.isdigit() for ch in l) == False or any(ch.isdigit() for ch in w) == False: #checks if the sides inputted by user contain letters or symbols (str)
-          msg = 'Side length must be a NUMBER, EG: 5, not "five" or "fifth"' #Inputs the error message that pops up
+        if l <= 0 or w <= 0: #checks that the side lengths inputted are greater than 0
+          msg = 'Please Do Not Input a Negative length' #Inputs the error message that pops up
           calc_area = ' ' #clears the Calc Area box
           display_area(calc_area) #clears calc area box by printing the cleared the Calc Area box
           calc_perim = ' ' #clears the Calc Perimeter box
           display_perim(calc_perim) #clears calc perim box by printing the cleared the Calc Perimeter box
           
         else:
-          #converting sidce lengths to float
-          l = float(l)
-          w = float(w)
+          calc_area= find_area(l, w) #calculates area using length and width
+          display_area(calc_area) #displays calculated area
+          calc_perim = find_perim(l, w) #calculates perimeter using length and width
+          display_perim(calc_perim) #displays calculated perimeter
+          
+    except Exception as ep:
+      messagebox.showerror('error', ep) #prints and error message to tell the user and error happened according to the syntax error
 
-          if l <= 0 or w <= 0: #checks that the side lengths inputted are greater than 0
-            msg = 'Please Do Not Input a Negative length' #Inputs the error message that pops up
-            calc_area = ' ' #clears the Calc Area box
-            display_area(calc_area) #clears calc area box by printing the cleared the Calc Area box
-            calc_perim = ' ' #clears the Calc Perimeter box
-            display_perim(calc_perim) #clears calc perim box by printing the cleared the Calc Perimeter box
-            
-          else:
-            calc_area= find_area(l, w) #calculates area using length and width
-            display_area(calc_area) #displays calculated area
-            calc_perim = find_perim(l, w) #calculates perimeter using length and width
-            display_perim(calc_perim) #displays calculated perimeter
-            
-      except Exception as ep:
-        messagebox.showerror('error', ep) #prints and error message to tell the user and error happened according to the syntax error
-
-    
-    if msg != '':
-      messagebox.showinfo('message', msg) #program checks if message box is clear and if not prints message box with new data
-      
+  
+  if msg != '':
+    messagebox.showinfo('message', msg) #program checks if message box is clear and if not prints message box with new data
+  # ____________   rectangle WINDOW  ________________
+def rectanglecode():     
   # Creating a custom window
   window = tk.Tk()
   window.geometry("500x380")
@@ -105,11 +96,16 @@ def rectanglecode():
 
   lb_perim = tk.Label(window,font=("Arial",13),text="Perimeter Calculated:" ,fg="black",bg="#858585")
 
+  global tbox_area #making tbox avaible to use in definitions outisde of trianglecode()
+  global tbox_perim #making tbox avaible to use in definitions outisde of trianglecode()
+  
   tbox_area=tk.Text(window,width=6,height=1,state="disabled",font=('Arial',24,"bold"))
   
   tbox_perim=tk.Text(window,width=6,height=1,state="disabled",font=('Arial',24,"bold"))
     
    # Entry boxes for length and width
+  global length #making length avaible to use in definitions outisde of trianglecode()
+  global width #making width avaible to use in definitions outisde of trianglecode()
   length = tk.Entry(window,width=15)
   
   width = tk.Entry(window,width=15)

@@ -1,100 +1,92 @@
 #_____ IMPORTS ______
-import tkinter as tk
-from tkinter import messagebox
-from tkinter import ttk
-from main import *
-
-
+from main import * #importing imports from main
 
 #_____ DEFINITIONS _____
-def clearBox(self):
-    self.txt1.delete("1.0", "end")
+def find_perim(s1, s2, s3):
+  p=s1+s2+s3 #calculates perimeter using sum of length of side 1, length of side 2 and length of side 3
+  perimeter=round(p, 2) #rounds calculated perimeter to 2DP
+  return perimeter
+
+def find_area(s1, s2, s3):
+  x = float(math.acos((s1*s1+s2*s2-s3*s3)/(2*s1*s2))) #calculates an angle of the triangle inputted using the cos rule
+  height = float(sin(x) * s1) #uses angle calculated to calculate area using trigonometry
+  a=0.5 * s2 * height #calculates Area using base, height then halving
+  area = round(a, 2) #rounds calculated area to 2DP
+  return area
+
+def display_area(area):
+  tbox_area.config(state='normal')
+
+  #area calculated is inserted into the text box after clearing the previous info in the textbox. 
+  tbox_area.delete('1.0', tk.END)
+  tbox_area.insert(tk.END,area)
+  tbox_area.config(state='disabled')
+
+def display_perim(perimeter):
+  tbox_perim.config(state='normal')
+  #Perimeter calculated is inserted into the text box after clearing the previous info in the textbox. 
+  tbox_perim.delete('1.0', tk.END)
+  tbox_perim.insert(tk.END,perimeter)
+  tbox_perim.config(state='disabled')
+
+def validation(): 
+  # gets the three entries
+  s_1 = side_1.get()
+  s_2 = side_2.get()
+  s_3 = side_3.get()
   
-  # ____________   TRIANGLE WINDOW  ________________
-def trianglecode():
-  def find_perim(s1, s2, s3):
-    p=s1+s2+s3 #calculates perimeter using sum of length of side 1, length of side 2 and length of side 3
-    perimeter=round(p, 3) #rounds calculated perimeter to 3 DP
-    return perimeter
-
-  def find_area(s1, s2, s3):
-    x = float(math.acos((s1*s1+s2*s2-s3*s3)/(2*s1*s2))) #calculates an angle of the triangle inputted using the cos rule
-    height = float(sin(x) * s1) #uses angle calculated to calculate area using trigonometry
-    a=0.5 * s2 * height #calculates Area using base, height then halving
-    area = round(a, 3) #rounds calculated area to 3DP
-    return area
-
-  def display_area(area):
-    tbox_area.config(state='normal')
-
-    #area calculated is inserted into the text box after clearing the previous info in the textbox. 
-    tbox_area.delete('1.0', tk.END)
-    tbox_area.insert(tk.END,area)
-    tbox_area.config(state='disabled')
+  msg = '' #makes the message box 'clear'
   
-  def display_perim(perimeter):
-    tbox_perim.config(state='normal')
-    #Perimeter calculated is inserted into the text box after clearing the previous info in the textbox. 
-    tbox_perim.delete('1.0', tk.END)
-    tbox_perim.insert(tk.END,perimeter)
-    tbox_perim.config(state='disabled')
+  if len(s_1) == 0 or len (s_2) == 0 or len (s_3) == 0: #checks if the number of characters in the input boxes = 0
+    msg = 'Please Do Not leave any Input Boxes Empty' #Inputs the error message that pops up
+    calc_area = ' ' #clears the Calc Area box
+    display_area(calc_area) #clears calc area box by printing the cleared Calc area box
+    calc_perim = ' ' #clears the Calc Perimeter box
+    display_perim(calc_perim) #clears calc perim box by printing the cleared the Calc Perimeter box
+    
+  else:
+    try:
+      if any(ch.isdigit() for ch in s_1) == False or any(ch.isdigit() for ch in s_2) == False or any(ch.isdigit() for ch in s_3) == False: #checks if the sides inputted by user contain letters or symbols (str)
+        msg = 'Side length must be a NUMBER, EG: 5, not "five" or "fifth"' #Inputs the error message that pops up
+        calc_area = ' ' #clears the Calc Area box
+        display_area(calc_area) #prints cleared the Calc Area box
+        calc_perim = ' ' #clears the Calc Perimeter box
+        display_perim(calc_perim) #prints cleared the Calc Perimeter box
+        
+      else:
+        #converting inputted sides to float
+        s1 = float(s_1)
+        s2 = float(s_2)
+        s3 = float(s_3)
 
-  def validation(): 
-    # gets the three entries
-    s_1 = side_1.get()
-    s_2 = side_2.get()
-    s_3 = side_3.get()
-    
-    msg = '' #makes the message box 'clear'
-    
-    if len(s_1) == 0 or len (s_2) == 0 or len (s_3) == 0: #checks if the number of characters in the input boxes = 0
-      msg = 'Please Do Not leave any Input Boxes Empty' #Inputs the error message that pops up
-      calc_area = ' ' #clears the Calc Area box
-      display_area(calc_area) #clears calc area box by printing the cleared Calc area box
-      calc_perim = ' ' #clears the Calc Perimeter box
-      display_perim(calc_perim) #clears calc perim box by printing the cleared the Calc Perimeter box
-      
-    else:
-      try:
-        if any(ch.isdigit() for ch in s_1) == False or any(ch.isdigit() for ch in s_2) == False or any(ch.isdigit() for ch in s_3) == False: #checks if the sides inputted by user contain letters or symbols (str)
-          msg = 'Side length must be a NUMBER, EG: 5, not "five" or "fifth"' #Inputs the error message that pops up
+        if s1 <= 0 or s2 <= 0 or s3 <= 0: #checks that the side lengths inputted are greater than 0
+          msg = 'Please Do Not Input a Negative length' #Inputs the error message that pops up
           calc_area = ' ' #clears the Calc Area box
           display_area(calc_area) #prints cleared the Calc Area box
           calc_perim = ' ' #clears the Calc Perimeter box
           display_perim(calc_perim) #prints cleared the Calc Perimeter box
+        
+        elif (s1 + s2) <= s3 or (s3 + s1) <= s2 or (s3 + s2) <= s1: #checks if the sum of two sides is greater than the third side to check if an inputted triangle is impossible
+          msg = 'Sorry, that Triangle is Impossible, Please make the Sum of any Two Sides Equal More than the Third Length' #Inputs the error message that pops up
+          calc_area = ' ' #clears the Calc Area box
+          display_area(calc_area) #prints cleared the Calc Area box
+          calc_perim = ' ' #clears the Calc Perimeter box
+          display_perim(calc_perim) #prints cleared the Calc Area box
           
         else:
-          #converting inputted sides to float
-          s1 = float(s_1)
-          s2 = float(s_2)
-          s3 = float(s_3)
+          calc_area= find_area(s1, s2, s3) #Calculates the area using all three side lengths
+          display_area(calc_area) #displays calculated area in in the appropriate tbox
+          calc_perim = find_perim(s1, s2, s3) #Calculates the Perimeter using all three side lengths
+          display_perim(calc_perim) #displays calculated Perimeter in in the appropriate tbox
+    except Exception as ep:
+      messagebox.showerror('error', ep) #prints and error message to tell the user and error happened according to the syntax error
 
-          if s1 <= 0 or s2 <= 0 or s3 <= 0: #checks that the side lengths inputted are greater than 0
-            msg = 'Please Do Not Input a Negative length' #Inputs the error message that pops up
-            calc_area = ' ' #clears the Calc Area box
-            display_area(calc_area) #prints cleared the Calc Area box
-            calc_perim = ' ' #clears the Calc Perimeter box
-            display_perim(calc_perim) #prints cleared the Calc Perimeter box
-          
-          elif (s1 + s2) <= s3 or (s3 + s1) <= s2 or (s3 + s2) <= s1: #checks if the sum of two sides is greater than the third side to check if an inputted triangle is impossible
-            msg = 'Sorry, that Triangle is Impossible, Please make the Sum of any Two Sides Equal More than the Third Length' #Inputs the error message that pops up
-            calc_area = ' ' #clears the Calc Area box
-            display_area(calc_area) #prints cleared the Calc Area box
-            calc_perim = ' ' #clears the Calc Perimeter box
-            display_perim(calc_perim) #prints cleared the Calc Area box
-            
-          else:
-            calc_area= find_area(s1, s2, s3) #Calculates the area using all three side lengths
-            display_area(calc_area) #displays calculated area in in the appropriate tbox
-            calc_perim = find_perim(s1, s2, s3) #Calculates the Perimeter using all three side lengths
-            display_perim(calc_perim) #displays calculated Perimeter in in the appropriate tbox
-      except Exception as ep:
-        messagebox.showerror('error', ep) #prints and error message to tell the user and error happened according to the syntax error
-
-    
-    if msg != '':
-      messagebox.showinfo('message', msg) #tells the program that if the message box is not empty, print the message box with it's new text
   
+  if msg != '':
+    messagebox.showinfo('message', msg) #tells the program that if the message box is not empty, print the message box with it's new text
+    
+  # ____________   TRIANGLE WINDOW  ________________
+def trianglecode():
   # Creating a custom window
   window = tk.Tk()
   window.geometry("500x380")
@@ -114,11 +106,17 @@ def trianglecode():
   lb_perim = tk.Label(window,font=("Arial",13),text="Perimeter Calculated:" ,fg="black",bg="#858585")
  
   #text boxes that show the calculated area and perimeter
-
+  global tbox_area
+  global tbox_perim
+  
   tbox_area=tk.Text(window,width=6,height=1,state="disabled",font=('Arial',24,"bold"))
   tbox_perim=tk.Text(window,width=6,height=1,state="disabled",font=('Arial',24,"bold"))
     
    # Entry boxes for date, month and year
+  global side_1
+  global side_2
+  global side_3
+  
   side_1 = tk.Entry(window,width=15)
   
   side_2 = tk.Entry(window,width=15)

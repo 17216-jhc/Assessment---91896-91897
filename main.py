@@ -5,7 +5,7 @@
 # ____________   IMPORTS ________________
 import math #import to be able to use pi in calculations
 from main import * #import to be able to use pi and acos in calculations
-from math import sin, radians #import to be able to use sin and radians in calculations
+from math import sin, radians #import to be able to use sin and radians in Triangle calculations
 import tkinter as tk
 from tkinter import messagebox #importing message box to display errors
 from tkinter import ttk
@@ -35,7 +35,7 @@ def opencircwindow():
 # ____________   MAIN  ________________
   # Creating a custom window
 window = tk.Tk()
-window.geometry("500x280")
+window.geometry("500x285")
 window.config(bg="#858585")
 window.resizable(width=False,height=False)
 window.title('Area and Perimeter Calculator')
