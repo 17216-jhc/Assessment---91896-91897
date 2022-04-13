@@ -6,9 +6,8 @@
 import math #import to be able to use pi in calculations
 from main import * #import to be able to use pi and acos in calculations
 from math import sin, radians #import to be able to use sin and radians in Triangle calculations
-import tkinter as tk
+import tkinter as tk #importing tkinter to open GUI
 from tkinter import messagebox #importing message box to display errors
-from tkinter import ttk
 from trianglecode import * #importing 'def trianglecode():'
 from rectanglecode import * #importing 'def rectanglecode():'
 from parallelogramcode import * #importing 'def parallelogramcode():'
@@ -16,15 +15,11 @@ from circlecode import * #importing 'def circlecode():'
 
 
 # ____________   FUNCTIONS ________________
-def clearBox(self):
-    self.txt1.delete("1.0", "end")
-
-def opentriwindow():
+def opentriwindow(): 
   trianglecode() #runs code that opens new window that has triagnle length inputs and calculate area and perimeter button as well as calculated and displayed area and perimeter
   
 def openrectwindow():
   rectanglecode() #runs code that opens new window that has rectangle length inputs and calculate area and perimeter button as well as calculated and displayed area and perimeter
-  global window
 
 def openparallelwindow():
   parallelogramcode() #runs code that opens new window that has parallelogram length inputs and calculate area and perimeter button as well as calculated and displayed area and perimeter
